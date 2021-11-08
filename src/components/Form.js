@@ -24,6 +24,24 @@ const Form = (props) => {
     setFavStack("");
     setTallClub(false);
     };
+    //  Another  way to do it with a validating handler
+    //  const submitHandler=(e)=> {
+    //             e.preventDefault();
+    //             if(name.length<3||favStack === ""){
+    //                 setErrorMsg("Your form has unresolved problems!");
+    //             }else {
+    //                 e.preventDefault();
+    //             setStudentList([...studentList, {
+    //             name,
+    //             favStack,
+    //             tallClub
+    //         }
+    //         ])
+        
+    //     setName("");
+    //     setFavStack("");
+    //     setTallClub(false);
+    //     };
 
     return(
         <div>
@@ -35,7 +53,15 @@ const Form = (props) => {
                     <span>Your name must be at least 3 characters long!</span>
                     : null
                 }
-
+                {/* 
+                    error message for validating handler
+                    {
+                        errorMsg?
+                        <p>{errorMsg}</p>
+                        :null
+                    }
+                */}
+                
                 <p>
                     {/* Difference here: htmlFor (jsx) vs for (html) */}
                     <label htmlFor="name">Name: </label>
