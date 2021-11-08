@@ -10,6 +10,7 @@ const Display = (props) => {
                 <h1>Roster : </h1>
                 <div style={{display: "flex", color: "green"}}>
                 {
+                    // using map to list the students out. index is to get rid of an error
                 studentList.map((student, index) => (
                     <div key={index}>
                         <p>{student.name}</p>

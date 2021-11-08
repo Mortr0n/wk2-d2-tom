@@ -9,14 +9,17 @@ const Form = (props) => {
     const [tallClub, setTallClub] = useState(false);
     
     const submitHandler=(e) => {
+        // prevent the default refresh of the page on submit
         e.preventDefault();
+        // copy the studentList Array and then add the new student object.  Using the short form of
+        // name: name, favStack:favStack, tallClub:tallClub
         setStudentList([...studentList, {
             name,
             favStack,
             tallClub
         }
         ])
-
+        // Set the form items back to the original settings (blank and unchecked)
     setName("");
     setFavStack("");
     setTallClub(false);
@@ -26,6 +29,7 @@ const Form = (props) => {
         <div>
             <h1>Add a Student!</h1>
             <form onSubmit={submitHandler} style={{width:"50%", textAlign:"left", margin:"auto"}}>
+                {/* for validations use ternary and you can return null if it meets the specs */}
                 {
                     name.length > 0 && name.length < 3 ?
                     <span>Your name must be at least 3 characters long!</span>
@@ -41,6 +45,7 @@ const Form = (props) => {
                 
                 <p>
                     <label htmlFor="tallclub">Tall? (6 feet +): </label>
+                    {/* set tallClub to whatever it isn't when the checkbox is checked !tallClub */}
                     <input name="tallClub" type="checkbox" checked={tallClub} onChange={(e) => setTallClub(!tallClub)}/>
                 </p>
 
