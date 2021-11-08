@@ -12,7 +12,7 @@ const Display = (props) => {
                 {
                     // using map to list the students out. index is to get rid of an error
                 studentList.map((student, index) => (
-                    <div key={index}>
+                    <div key={index} style={{display:"flex", flexDirection:"column", padding:"10px", border:"3px solid black", margin:"5px"}}>
                         <p>{student.name}</p>
                         {
                             student.tallClub === true ?
