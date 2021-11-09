@@ -1,66 +1,66 @@
 import React, {useState} from 'react';
 
 const Form = (props) => {
-    // Our pieces of stte.  They are being altered below with our synthetic events!
+    // Our pieces of state.  They are being altered below with our synthetic events!
 
     const {studentList, setStudentList} = props;
     const [name, setName] = useState("");
     const [favStack, setFavStack] = useState("");
     const [tallClub, setTallClub] = useState(false);
+    const [errorMsg, setErrorMsg] = useState("");
     
-    const submitHandler=(e) => {
-        // prevent the default refresh of the page on submit
-        e.preventDefault();
-        // copy the studentList Array and then add the new student object.  Using the short form of
-        // name: name, favStack:favStack, tallClub:tallClub
-        setStudentList([...studentList, {
-            name,
-            favStack,
-            tallClub
-        }
-        ])
-        // Set the form items back to the original settings (blank and unchecked)
-    setName("");
-    setFavStack("");
-    setTallClub(false);
-    };
+    // const submitHandler=(e) => {
+    //     // prevent the default refresh of the page on submit
+    //     e.preventDefault();
+    //     // copy the studentList Array and then add the new student object.  Using the short form of
+    //     // name: name, favStack:favStack, tallClub:tallClub
+    //     setStudentList([...studentList, {
+    //         name,
+    //         favStack,
+    //         tallClub
+    //     }
+    //     ])
+    //     // Set the form items back to the original settings (blank and unchecked)
+    // setName("");
+    // setFavStack("");
+    // setTallClub(false);
+    // };
     //  Another  way to do it with a validating handler
-    //  const submitHandler=(e)=> {
-    //             e.preventDefault();
-    //             if(name.length<3||favStack === ""){
-    //                 setErrorMsg("Your form has unresolved problems!");
-    //             }else {
-    //                 e.preventDefault();
-    //             setStudentList([...studentList, {
-    //             name,
-    //             favStack,
-    //             tallClub
-    //         }
-    //         ])
-        
-    //     setName("");
-    //     setFavStack("");
-    //     setTallClub(false);
-    //     };
+    const submitHandler=(e)=> {
+        e.preventDefault(e);
+        if(name.length<3||favStack === ""){
+            setErrorMsg("Your form has unresolved problems!");
+            }else {
+                setStudentList([...studentList, {
+                name,
+                favStack,
+                tallClub
+            }
+            ])
+        setName("");
+        setFavStack("");
+        setTallClub(false);
+        setErrorMsg("");
+        };}
 
     return(
         <div>
             <h1>Add a Student!</h1>
             <form onSubmit={submitHandler} style={{width:"50%", textAlign:"left", margin:"auto"}}>
                 {/* for validations use ternary and you can return null if it meets the specs */}
-                {
+                {/* {
                     name.length > 0 && name.length < 3 ?
                     <span>Your name must be at least 3 characters long!</span>
                     : null
-                }
-                {/* 
-                    error message for validating handler
+                } */}
+                
+                    {/* error message for validating handler I used the 
+                    alternate if there isn't an else for an if statement here*/}
                     {
-                        errorMsg?
+                        errorMsg&&
                         <p>{errorMsg}</p>
-                        :null
+                        
                     }
-                */}
                 
                 <p>
                     {/* Difference here: htmlFor (jsx) vs for (html) */}
